@@ -14,3 +14,17 @@ end
 describe port(80), :skip do
   it { should_not be_listening }
 end
+
+
+describe package ('mongodb-org') do
+  its('version') { should cmp > '3.2.*'}
+end
+
+describe service "mongod" do
+  it { should be_running }
+  it { should be_enabled }
+end
+
+describe port('0.0.0.0', 27017) do
+  it { should be_listening }
+end
