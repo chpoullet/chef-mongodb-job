@@ -56,6 +56,10 @@ template 'etc/metricbeat/metricbeat.yml' do
   group 'root'
 end
 
+execute 'fix_template' do
+  command 'sudo chmod go-w /etc/metricbeat/metricbeat.yml'
+end
+
 execute 'enable_module' do
   command 'sudo metricbeat modules enable mongodb'
 end
@@ -81,6 +85,10 @@ template 'etc/filebeat/filebeat.yml' do
   mode '777'
   owner 'root'
   group 'root'
+end
+
+execute 'fix_template' do
+  command 'sudo chmod go-w /etc/filebeat/filebeat.yml'
 end
 
 execute 'enable_module' do
