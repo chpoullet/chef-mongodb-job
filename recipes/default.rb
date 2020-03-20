@@ -60,17 +60,17 @@ execute 'fix_template' do
   command 'sudo chmod go-w /etc/metricbeat/metricbeat.yml'
 end
 
-execute 'enable_module' do
+execute 'enable_module_mongodb' do
   command 'sudo metricbeat modules enable mongodb'
 end
 
-execute 'enable_module' do
+execute 'enable_module_system' do
   command 'sudo metricbeat modules enable system'
 end
 
-execute 'setup_dasboards' do
-  command 'sudo metricbeat setup'
-end
+#execute 'setup_dasboards' do
+#  command 'sudo metricbeat setup'
+#end
 
 execute 'download_filebeat' do
   command 'curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb'
@@ -91,13 +91,13 @@ execute 'fix_template' do
   command 'sudo chmod go-w /etc/filebeat/filebeat.yml'
 end
 
-execute 'enable_module' do
+execute 'enable_module_syslogs' do
   command 'sudo filebeat modules enable system'
 end
 
-execute 'setup_dasboards' do
-  command 'sudo filebeat setup'
-end
+#execute 'setup_dasboards' do
+#  command 'sudo filebeat setup'
+#end
 
 service 'metricbeat' do
   supports status: true, restart: true, reload: true
