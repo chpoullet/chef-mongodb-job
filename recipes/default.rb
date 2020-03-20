@@ -73,7 +73,7 @@ end
 #end
 
 execute 'download_filebeat' do
-  command 'curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.6.1-amd64.deb'
+  command 'curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb'
 end
 
 execute 'install_filebeat' do
